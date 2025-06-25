@@ -1,0 +1,20 @@
+name: CI - Frontend FraseApp
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
+      - name: Verificar estrutura do projeto
+        run: |
+          echo "Listando arquivos..."
+          ls -la
+          echo "Arquivo index.html existe?"
+          test -f index.html && echo "Sim" || echo "Não encontrado"
