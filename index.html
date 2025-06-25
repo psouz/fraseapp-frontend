@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FraseApp</title>
+</head>
+<body>
+  <h1>Frase do dia</h1>
+  <p id="frase">Clique no botão para carregar uma frase.</p>
+  <button onclick="carregarFrase()">Nova Frase</button>
+
+  <script>
+    function carregarFrase() {
+      fetch('http://localhost:3000/frase')
+        .then(res => res.text())
+        .then(texto => {
+          document.getElementById('frase').innerText = texto;
+        })
+        .catch(erro => {
+          document.getElementById('frase').innerText = 'Erro ao buscar frase.';
+          console.error(erro);
+        });
+    }
+  </script>
+</body>
+</html>
